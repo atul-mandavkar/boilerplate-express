@@ -22,6 +22,11 @@ app.use(express.static(__dirname + "/views"));
 // In index.html file the link tag have href attribute is set to /public/style.css so only call root ("/") in next static file implementation and that will directly attach the style.css file to index.html file
 app.use(express.static(__dirname + "/"));
 
+// Transfer json format
+app.get("/json", (req, res)=>{
+  res.json({ message: "Hello json"});
+});
+
 
 
 
