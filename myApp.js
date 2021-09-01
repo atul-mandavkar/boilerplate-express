@@ -45,7 +45,13 @@ app.get("/json", (req, res)=>{
   }
 })
 
-
+// To create time server chain the middleware
+app.get("/now", (req, res, next)=>{
+  req.time = new Date().toString();
+  next();
+}, (req, res)=>{
+  res.json({time: req.time});
+})
 
 
 
