@@ -53,7 +53,10 @@ app.get("/now", (req, res, next)=>{
   res.json({time: req.time});
 })
 
-
+// Take params input from client
+app.get("/:word/echo", (req, res)=>{
+  res.json({echo: req.params.word});
+})
 
 
 
