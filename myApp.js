@@ -62,8 +62,17 @@ app.get("/:word/echo", (req, res)=>{
 app.get("/name", (req, res)=>{
   let firstname = req.query.first;
   let lastname = req.query.last;
-  console.log(req.query.first);
   res.json({name: firstname +" "+ lastname});
+  /* OR used this method
+  let val = (req.query);
+  let k1 = Object.keys(val), ans="";
+  for(let i=0; i<k1.length; i++){
+    ans += val[k1[i]];
+    if(i != k1.length-1){
+      ans += " ";
+    }
+  }
+  res.json({name: ans});*/
 })
 
 
