@@ -58,6 +58,14 @@ app.get("/:word/echo", (req, res)=>{
   res.json({echo: req.params.word});
 })
 
+// Take query form input from client
+app.get("/name", (req, res)=>{
+  let firstname = req.query.first;
+  let lastname = req.query.last;
+  console.log(req.query.first);
+  res.json({name: firstname +" "+ lastname});
+})
+
 
 
 
