@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var absolutePath = __dirname + "/views/index.html";
 require("dotenv").config();
+var bodyParser = require("body-parser")
 console.log("Hello World");
 
 // Root level request logger middleware
@@ -9,7 +10,6 @@ app.use((req, res, next)=>{
   console.log(req.method + " " + req.path + " - " + req.ip);
   next();
 })
-
 
 app.get("/1", function(req, res){
   res.send("Hello Express");
@@ -75,9 +75,17 @@ app.get("/name", (req, res)=>{
   res.json({name: ans});*/
 })
 
+// Body parser to parse the POST request
+var urlencodedParser = bodyParser.urlencoded({extended: false});
 
+var jsonParser = bodyParser.json();
 
-
+app.use("/name", urlencodedParser, (req, res)=>{
+  //res.setHeader("Content-Type", "text/plain");
+  res.write("you posted:\n");
+  console.log(req.body);
+  res.end(JSON.stringify(req.body, null, 2));
+})
 
 
 
