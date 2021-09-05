@@ -79,15 +79,17 @@ app.get("/name", (req, res)=>{
 var urlencodedParser = bodyParser.urlencoded({extended: false});
 
 var jsonParser = bodyParser.json();
-
+/*
 app.use("/name", urlencodedParser, (req, res)=>{
-  //res.setHeader("Content-Type", "text/plain");
+  res.set("Content-Type", "text/plain"); // res.set instead of res.setHeader 
   res.write("you posted:\n");
   console.log(req.body);
   res.end(JSON.stringify(req.body, null, 2));
+})*/
+
+app.post("/name", urlencodedParser, (req, res)=>{
+  res.json({name: req.body.first + " " + req.body.last})
 })
-
-
 
 
 
